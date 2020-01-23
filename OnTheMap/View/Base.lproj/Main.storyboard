@@ -45,7 +45,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wke-tB-gqk"/>
+                                            <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wke-tB-gqk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -71,6 +71,9 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6rn-HQ-wAt">
+                                <rect key="frame" x="197" y="554" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -79,6 +82,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JH8-wH-04W" secondAttribute="trailing" constant="50" id="AbX-XU-Esq"/>
                             <constraint firstItem="Xgc-f4-QKt" firstAttribute="leading" secondItem="JH8-wH-04W" secondAttribute="leading" id="CD7-mk-NWJ"/>
                             <constraint firstItem="JH8-wH-04W" firstAttribute="top" secondItem="hQw-d6-tFt" secondAttribute="bottom" constant="80" id="Gan-du-KZh"/>
+                            <constraint firstItem="6rn-HQ-wAt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JCW-1d-EPZ"/>
+                            <constraint firstItem="6rn-HQ-wAt" firstAttribute="top" secondItem="Xgc-f4-QKt" secondAttribute="bottom" constant="8" id="iVK-ij-wG4"/>
                             <constraint firstItem="Xgc-f4-QKt" firstAttribute="top" secondItem="JH8-wH-04W" secondAttribute="bottom" constant="30" id="krs-bf-ARk"/>
                             <constraint firstItem="hQw-d6-tFt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="l94-u3-mKK"/>
                             <constraint firstItem="hQw-d6-tFt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rk9-tT-7Qk"/>
@@ -86,6 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="6rn-HQ-wAt" id="clA-Z6-m0K"/>
                         <outlet property="emailTextField" destination="IDf-9j-XiB" id="A7y-yl-g15"/>
                         <outlet property="loginButton" destination="1h1-v0-ned" id="ZLg-GF-Oj2"/>
                         <outlet property="passwordTextField" destination="aCH-HK-w6v" id="mzs-NO-dPG"/>

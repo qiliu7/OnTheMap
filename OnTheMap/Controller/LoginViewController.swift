@@ -14,21 +14,23 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var signUpTextView: UITextView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupUI()
+    configureUI()
   }
   
-  @IBAction func loginButtonTapped(_ sender: Any) {
+  @IBAction func loginTapped(_ sender: Any) {
+    setLoggingIn(true)
     let username = emailTextField.text ?? ""
     let password = passwordTextField.text ?? ""
     OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
   }
    
-  
   func handleLoginResponse(success: Bool, error: Error?) {
+    setLoggingIn(false)
     if success {
       print("success")
       //TODO: perform segue
@@ -37,8 +39,15 @@ class LoginViewController: UIViewController {
     }
   }
 
+  func showLoginFailure(message: String) {
+    let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+    
+    //TODO: should have a func to set loggingIn state
+    alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    show(alertVC, sender: nil)
+  }
   
-  func setupUI() {
+  func configureUI() {
     loginButton.layer.cornerRadius = loginButton.frame.height/8
     
     let prompt = "Don't have an account? Sign Up"
@@ -50,13 +59,12 @@ class LoginViewController: UIViewController {
     attributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(0..<prompt.count))
     signUpTextView.attributedText = attributedString
   }
-
-  func showLoginFailure(message: String) {
-    let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-    
-    //TODO: should have a func to set loggingIn state
-    alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    show(alertVC, sender: nil)
+  
+  func setLoggingIn(_ loggingIn: Bool) {
+    emailTextField.isEnabled = !loggingIn
+    passwordTextField.isEnabled = !loggingIn
+    loginButton.isEnabled = !loggingIn
+    loggingIn ? activityIndicator.startAnimating(): activityIndicator.stopAnimating()
   }
 }
 
