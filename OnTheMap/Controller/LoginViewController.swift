@@ -20,16 +20,16 @@ class LoginViewController: UIViewController {
   }
   
   func setupUI() {
-    
     loginButton.layer.cornerRadius = loginButton.frame.height/8
-
-    let signUpString = NSMutableAttributedString(string: "Don't have an account? Sign Up")
-    signUpString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15.0), range: .init(location: 0, length: 30))
-    signUpString.addAttribute(.link, value: "https://auth.udacity.com/sign-up", range: NSRange(location: 23, length: 7))
+    
+    let prompt = "Don't have an account? Sign Up"
+    let attributedString = NSMutableAttributedString(string: prompt)
+    attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15.0), range: NSRange(0..<prompt.count))
+    attributedString.addAttribute(.link, value: Client.Endpoints.signUp, range: NSRange(23..<prompt.count))
     let style = NSMutableParagraphStyle()
     style.alignment = .center
-    signUpString.addAttribute(.paragraphStyle, value: style, range: .init(location: 0, length: 30))
-    signUpTextView.attributedText = signUpString
+    attributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(0..<prompt.count))
+    signUpTextView.attributedText = attributedString
   }
 }
 
