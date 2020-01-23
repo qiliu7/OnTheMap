@@ -22,19 +22,21 @@ class LoginViewController: UIViewController {
   }
   
   @IBAction func loginButtonTapped(_ sender: Any) {
-    OTMClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") { (success, error) in
-      if success {
-        print("success")
-        //TODO: perform segue
-      } else {
-        print(error!)
-        //TODO: show failure alert
-      }
+    let username = emailTextField.text ?? ""
+    let password = passwordTextField.text ?? ""
+    OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
+  }
+   
+  
+  func handleLoginResponse(success: Bool, error: Error?) {
+    if success {
+      print("success")
+      //TODO: perform segue
+    } else {
+      self.showLoginFailure(message: error?.localizedDescription ?? "")
     }
   }
 
-  
-  
   
   func setupUI() {
     loginButton.layer.cornerRadius = loginButton.frame.height/8
@@ -48,5 +50,14 @@ class LoginViewController: UIViewController {
     attributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(0..<prompt.count))
     signUpTextView.attributedText = attributedString
   }
+
+  func showLoginFailure(message: String) {
+    let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+    
+    //TODO: should have a func to set loggingIn state
+    alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    show(alertVC, sender: nil)
+  }
 }
+
 
