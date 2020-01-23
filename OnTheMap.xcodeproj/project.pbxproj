@@ -13,6 +13,10 @@
 		B17DB44723D906FE0059C2FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17DB44523D906FE0059C2FD /* Main.storyboard */; };
 		B17DB44923D907000059C2FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B17DB44823D907000059C2FD /* Assets.xcassets */; };
 		B17DB44C23D907000059C2FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B17DB44A23D907000059C2FD /* LaunchScreen.storyboard */; };
+		B17DB45D23D932690059C2FD /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB45C23D932690059C2FD /* OTMClient.swift */; };
+		B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB45F23D93A320059C2FD /* LoginRequest.swift */; };
+		B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46223D96EF80059C2FD /* SessionResponse.swift */; };
+		B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46423D97A750059C2FD /* OTMResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		B17DB44823D907000059C2FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B17DB44B23D907000059C2FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B17DB44D23D907000059C2FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B17DB45C23D932690059C2FD /* OTMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
+		B17DB45F23D93A320059C2FD /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		B17DB46223D96EF80059C2FD /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
+		B17DB46423D97A750059C2FD /* OTMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +65,9 @@
 			isa = PBXGroup;
 			children = (
 				B17DB45823D90A240059C2FD /* Delegate */,
+				B17DB45623D909F60059C2FD /* Model */,
 				B17DB45523D909EB0059C2FD /* Controller */,
 				B17DB45723D909FE0059C2FD /* View */,
-				B17DB45623D909F60059C2FD /* Model */,
 				B17DB45323D909CF0059C2FD /* Resource */,
 			);
 			path = OnTheMap;
@@ -85,6 +93,9 @@
 		B17DB45623D909F60059C2FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B17DB46123D96EDB0059C2FD /* Response */,
+				B17DB45E23D93A160059C2FD /* Request */,
+				B17DB45B23D9324E0059C2FD /* Client */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +116,31 @@
 				B17DB44123D906FE0059C2FD /* SceneDelegate.swift */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		B17DB45B23D9324E0059C2FD /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				B17DB45C23D932690059C2FD /* OTMClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		B17DB45E23D93A160059C2FD /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				B17DB45F23D93A320059C2FD /* LoginRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		B17DB46123D96EDB0059C2FD /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B17DB46223D96EF80059C2FD /* SessionResponse.swift */,
+				B17DB46423D97A750059C2FD /* OTMResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +216,11 @@
 			files = (
 				B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */,
 				B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */,
+				B17DB45D23D932690059C2FD /* OTMClient.swift in Sources */,
+				B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */,
 				B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */,
+				B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */,
+				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
