@@ -96,11 +96,76 @@
                         <outlet property="loginButton" destination="1h1-v0-ned" id="ZLg-GF-Oj2"/>
                         <outlet property="passwordTextField" destination="aCH-HK-w6v" id="mzs-NO-dPG"/>
                         <outlet property="signUpTextView" destination="Xgc-f4-QKt" id="KUV-T9-bDd"/>
+                        <segue destination="0Pp-GE-5Zw" kind="presentation" identifier="CompleteLogin" modalPresentationStyle="fullScreen" id="bjv-98-arI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="tnV-zZ-9de">
+            <objects>
+                <viewController id="cao-gq-y5c" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ijx-kz-2P5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="NSs-zQ-VcP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="VDL-go-Wtz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iC2-N5-WaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2597.1014492753625" y="-187.5"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="aKF-GQ-1LH">
+            <objects>
+                <tableViewController id="gCd-eM-gNI" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GUi-DD-4dy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mn5-OH-29s">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mn5-OH-29s" id="Wrd-Ol-rBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gCd-eM-gNI" id="kj0-Ie-7rm"/>
+                            <outlet property="delegate" destination="gCd-eM-gNI" id="olo-p2-VXA"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="t6K-sh-emp"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QZk-t4-hei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601.449275362319" y="557.8125"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="NHm-bY-a6U">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0Pp-GE-5Zw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="COJ-DV-Klq"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wSV-8T-pDy">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cao-gq-y5c" kind="relationship" relationship="viewControllers" id="rFf-6x-AWc"/>
+                        <segue destination="gCd-eM-gNI" kind="relationship" relationship="viewControllers" id="8Up-QR-nhe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SsI-dC-AGF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1251" y="130"/>
         </scene>
     </scenes>
     <resources>

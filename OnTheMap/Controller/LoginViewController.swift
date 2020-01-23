@@ -32,8 +32,7 @@ class LoginViewController: UIViewController {
   func handleLoginResponse(success: Bool, error: Error?) {
     setLoggingIn(false)
     if success {
-      print("success")
-      //TODO: perform segue
+      performSegue(withIdentifier: "CompleteLogin", sender: nil)
     } else {
       self.showLoginFailure(message: error?.localizedDescription ?? "")
     }
@@ -41,8 +40,6 @@ class LoginViewController: UIViewController {
 
   func showLoginFailure(message: String) {
     let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-    
-    //TODO: should have a func to set loggingIn state
     alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     show(alertVC, sender: nil)
   }
