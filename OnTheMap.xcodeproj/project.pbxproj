@@ -17,6 +17,9 @@
 		B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB45F23D93A320059C2FD /* LoginRequest.swift */; };
 		B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46223D96EF80059C2FD /* SessionResponse.swift */; };
 		B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46423D97A750059C2FD /* OTMResponse.swift */; };
+		B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46623DAA6860059C2FD /* MapViewController.swift */; };
+		B17DB46923DAB5830059C2FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46823DAB5830059C2FD /* Constants.swift */; };
+		B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		B17DB45F23D93A320059C2FD /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B17DB46223D96EF80059C2FD /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		B17DB46423D97A750059C2FD /* OTMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMResponse.swift; sourceTree = "<group>"; };
+		B17DB46623DAA6860059C2FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B17DB46823DAB5830059C2FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 		B17DB43E23D906FE0059C2FD /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				B17DB46823DAB5830059C2FD /* Constants.swift */,
 				B17DB45823D90A240059C2FD /* Delegate */,
 				B17DB45623D909F60059C2FD /* Model */,
 				B17DB45523D909EB0059C2FD /* Controller */,
@@ -86,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				B17DB44323D906FE0059C2FD /* LoginViewController.swift */,
+				B17DB46623DAA6860059C2FD /* MapViewController.swift */,
+				B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -221,6 +230,9 @@
 				B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */,
 				B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */,
 				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
+				B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */,
+				B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */,
+				B17DB46923DAB5830059C2FD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

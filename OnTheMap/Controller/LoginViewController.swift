@@ -15,8 +15,7 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var signUpTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
@@ -32,7 +31,7 @@ class LoginViewController: UIViewController {
   func handleLoginResponse(success: Bool, error: Error?) {
     setLoggingIn(false)
     if success {
-      performSegue(withIdentifier: "CompleteLogin", sender: nil)
+      performSegue(withIdentifier: Constants.toLocationTabViewSegueId, sender: nil)
     } else {
       self.showLoginFailure(message: error?.localizedDescription ?? "")
     }
