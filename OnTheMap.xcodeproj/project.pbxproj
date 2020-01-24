@@ -20,6 +20,8 @@
 		B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46623DAA6860059C2FD /* MapViewController.swift */; };
 		B17DB46923DAB5830059C2FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46823DAB5830059C2FD /* Constants.swift */; };
 		B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */; };
+		B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */; };
+		B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47023DAC5A40059C2FD /* OTMModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		B17DB46623DAA6860059C2FD /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B17DB46823DAB5830059C2FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
+		B17DB47023DAC5A40059C2FD /* OTMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,9 +106,10 @@
 		B17DB45623D909F60059C2FD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B17DB46F23DAC5860059C2FD /* Data */,
+				B17DB45B23D9324E0059C2FD /* Networking */,
 				B17DB46123D96EDB0059C2FD /* Response */,
 				B17DB45E23D93A160059C2FD /* Request */,
-				B17DB45B23D9324E0059C2FD /* Client */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,12 +132,12 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		B17DB45B23D9324E0059C2FD /* Client */ = {
+		B17DB45B23D9324E0059C2FD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				B17DB45C23D932690059C2FD /* OTMClient.swift */,
 			);
-			path = Client;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		B17DB45E23D93A160059C2FD /* Request */ = {
@@ -146,10 +151,19 @@
 		B17DB46123D96EDB0059C2FD /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */,
 				B17DB46223D96EF80059C2FD /* SessionResponse.swift */,
 				B17DB46423D97A750059C2FD /* OTMResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		B17DB46F23DAC5860059C2FD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B17DB47023DAC5A40059C2FD /* OTMModel.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */,
+				B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */,
 				B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */,
 				B17DB45D23D932690059C2FD /* OTMClient.swift in Sources */,
 				B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */,
@@ -232,6 +247,7 @@
 				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
 				B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */,
 				B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */,
+				B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */,
 				B17DB46923DAB5830059C2FD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,12 +20,15 @@ class OTMClient {
     static let base = "https://onthemap-api.udacity.com/v1"
     static let signUp = "https://auth.udacity.com/sign-up"
     
-    case login// actually the same as DELETE
+    case login
+    case getStudentLocations
     
     var stringValue: String {
       switch self {
       case .login:
         return Endpoints.base + "/session"
+      case .getStudentLocations:
+        return Endpoints.base + "/StudentLocation"
       }
     }
     
@@ -48,7 +51,41 @@ class OTMClient {
     }
   }
   
-  class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+  class func getStudentLocations(completion: @escaping (Bool, Error?) -> Void) {
+    taskForGETRequest(url: Endpoints.getStudentLocations.url, ResponseType: LocationResponse.self) { (response, error) in
+      guard let response = response else {
+        completion(false, error)
+        return
+      }
+      OTMModel.locations = response.results
+      completion(true, nil)
+    }
+  }
+  
+  class func taskForGETRequest<ResponseType: Decodable> (url: URL, ResponseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    let task = session.dataTask(with: url) { (data, response, error) in
+      guard let data = data else {
+        DispatchQueue.main.async {
+          completion(nil, error)
+        }
+        return
+      }
+      let decoder = JSONDecoder()
+      do {
+        let responseObject = try decoder.decode(ResponseType.self, from: data)
+        DispatchQueue.main.async {
+          completion(responseObject, nil)
+        }
+      } catch {
+        DispatchQueue.main.async {
+          completion(nil, error)
+        }
+      }
+    }
+    task.resume()
+  }
+  
+  class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable> (url: URL, body: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
