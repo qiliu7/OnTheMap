@@ -10,6 +10,7 @@ import Foundation
 
 struct Constants {
   
-  // maybe add struct segue later
+  // TODO: maybe add struct segue later
   static let toLocationTabViewSegueId = "CompleteLogin"
+  static let locationTableViewCellId = "LocationTableViewCell"
 }
