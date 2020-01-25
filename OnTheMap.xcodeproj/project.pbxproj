@@ -22,6 +22,7 @@
 		B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */; };
 		B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */; };
 		B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47023DAC5A40059C2FD /* OTMModel.swift */; };
+		B17DB47323DC09BD0059C2FD /* LocationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
 		B17DB47023DAC5A40059C2FD /* OTMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMModel.swift; sourceTree = "<group>"; };
+		B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				B17DB44323D906FE0059C2FD /* LoginViewController.swift */,
 				B17DB46623DAA6860059C2FD /* MapViewController.swift */,
 				B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */,
+				B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				B17DB45D23D932690059C2FD /* OTMClient.swift in Sources */,
 				B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */,
 				B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */,
+				B17DB47323DC09BD0059C2FD /* LocationPostingViewController.swift in Sources */,
 				B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */,
 				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
 				B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */,
