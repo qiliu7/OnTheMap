@@ -21,14 +21,14 @@ class OTMClient {
     static let signUp = "https://auth.udacity.com/sign-up"
     
     case login
-    case getStudentLocations
+    case getRecentStudentLocations(Int)
     
     var stringValue: String {
       switch self {
       case .login:
         return Endpoints.base + "/session"
-      case .getStudentLocations:
-        return Endpoints.base + "/StudentLocation"
+      case .getRecentStudentLocations(let number):
+        return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(number)"
       }
     }
     
@@ -51,13 +51,14 @@ class OTMClient {
     }
   }
   
-  class func getStudentLocations(completion: @escaping (Bool, Error?) -> Void) {
-    taskForGETRequest(url: Endpoints.getStudentLocations.url, ResponseType: LocationResponse.self) { (response, error) in
+  class func getRecentStudentLocations(_ number: Int, completion: @escaping (Bool, Error?) -> Void) {
+    taskForGETRequest(url: Endpoints.getRecentStudentLocations(number).url, ResponseType: LocationResponse.self) { (response, error) in
       guard let response = response else {
         completion(false, error)
         return
       }
       OTMModel.locations = response.results
+      print(OTMModel.locations)
       completion(true, nil)
     }
   }
