@@ -12,17 +12,18 @@ import MapKit
 class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  let numberOfLocation = 100
   var locations = [StudentLocation]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     mapView.delegate = self
-    OTMClient.getRecentStudentLocations(100, completion: handleLocationsResponse(success:error:))
+    OTMClient.getRecentStudentLocations(numberOfLocation, completion: handleLocationsResponseByPlacingPin(success:error:))
   }
 
   
-  func handleLocationsResponse(success: Bool, error: Error?) {
+  func handleLocationsResponseByPlacingPin(success: Bool, error: Error?) {
     
     locations = OTMModel.locations
     var annotations = [MKAnnotation]()
@@ -47,12 +48,9 @@ class MapViewController: UIViewController {
   }
   
   @IBAction func refreshTapped(_ sender: Any) {
-    OTMClient.getRecentStudentLocations(2, completion: handleLocationsResponse(success:error:))
+    OTMClient.getRecentStudentLocations(numberOfLocation, completion: handleLocationsResponseByPlacingPin(success:error:))
   }
-  
 }
-
-
 extension MapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

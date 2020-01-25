@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureUI()
+    setupUI()
   }
   
   @IBAction func loginTapped(_ sender: Any) {
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     show(alertVC, sender: nil)
   }
   
-  func configureUI() {
+  func setupUI() {
     loginButton.layer.cornerRadius = loginButton.frame.height/8
     
     let prompt = "Don't have an account? Sign Up"
