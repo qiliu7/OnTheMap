@@ -43,7 +43,6 @@ class OTMClient {
     taskForPOSTRequest(url: Endpoints.login.url, body: body, responseType: SessionResponse.self) { (response, error) in
       if let response = response {
         Auth.sessionId = response.session.id
-        print(Auth.sessionId)
         completion(true, nil)
       } else {
         completion(false, error)
@@ -58,7 +57,6 @@ class OTMClient {
         return
       }
       OTMModel.locations = response.results
-      print(OTMModel.locations)
       completion(true, nil)
     }
   }
