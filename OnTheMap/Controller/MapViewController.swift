@@ -12,44 +12,46 @@ import MapKit
 class MapViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  var locations = [StudentLocation]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     mapView.delegate = self
-    placeLocationPinsOnMap()
+    OTMClient.getRecentStudentLocations(100, completion: handleLocationsResponse(success:error:))
   }
+
   
-  func placeLocationPinsOnMap() {
+  func handleLocationsResponse(success: Bool, error: Error?) {
     
-    var locations = [StudentLocation]()
+    locations = OTMModel.locations
     var annotations = [MKAnnotation]()
     
-    OTMClient.getStudentLocations { (success, error) in
-      guard success else {
-        //TODO: show alert
-        print(error.debugDescription)
-        return
-      }
-      locations = OTMModel.locations
+    for loc in locations {
+      let coordinate = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
+      let first = loc.firstName
+      let last = loc.lastName
+      let mediaURL = loc.mediaURL
       
-      for loc in locations {
-        let coordinate = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-        let first = loc.firstName
-        let last = loc.lastName
-        let mediaURL = loc.mediaURL
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = "\(first) \(last)"
-        annotation.subtitle = mediaURL
-        
-        annotations.append(annotation)
-      }
-      self.mapView.addAnnotations(annotations)
+      let annotation = MKPointAnnotation()
+      annotation.coordinate = coordinate
+      annotation.title = "\(first) \(last)"
+      annotation.subtitle = mediaURL
+      
+      annotations.append(annotation)
     }
+    // remove existing annotations
+    self.mapView.removeAnnotations(mapView.annotations)
+    // place new annotations
+    self.mapView.addAnnotations(annotations)
   }
+  
+  @IBAction func refreshTapped(_ sender: Any) {
+    OTMClient.getRecentStudentLocations(2, completion: handleLocationsResponse(success:error:))
+  }
+  
 }
+
 
 extension MapViewController: MKMapViewDelegate {
   
@@ -68,10 +70,11 @@ extension MapViewController: MKMapViewDelegate {
       pinView!.annotation = annotation
     }
     
-  return pinView
+    return pinView
   }
   
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    
     if control == view.rightCalloutAccessoryView {
       let app = UIApplication.shared
       if let toOpen = view.annotation?.subtitle {

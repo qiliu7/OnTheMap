@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rwn-PI-3ee">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -128,7 +128,11 @@
                     <navigationItem key="navigationItem" title="On the Map" id="a3s-Im-sOU">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="0ZB-lS-h50"/>
-                            <barButtonItem systemItem="refresh" id="l8k-N2-SkK"/>
+                            <barButtonItem systemItem="refresh" id="l8k-N2-SkK">
+                                <connections>
+                                    <action selector="refreshTapped:" destination="cao-gq-y5c" id="05t-EO-PFO"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
