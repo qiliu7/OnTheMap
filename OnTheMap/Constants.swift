@@ -13,4 +13,5 @@ struct Constants {
   // TODO: maybe add struct segue later
   static let toLocationTabViewSegueId = "CompleteLogin"
   static let locationTableViewCellId = "LocationTableViewCell"
+  static let currentLocationVCStoryboardId = "CurrentLocationViewController"
 }
