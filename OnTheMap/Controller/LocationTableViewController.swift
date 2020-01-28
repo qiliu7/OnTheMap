@@ -42,19 +42,27 @@ class LocationTableViewController: UITableViewController {
     let location = OTMModel.locations[indexPath.row]
     
     if let url = URL(string: location.mediaURL) {
-      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      UIApplication.shared.open(url, options: [:], completionHandler: handleOpenURLComplete(success:))
     }
-    
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
-  @IBAction func freshTapped(_ sender: Any) {
+  func handleOpenURLComplete(success: Bool) {
+    guard success else {
+      self.showAlert(title: "Error", message: "Invalid URL")
+      return
+    }
+  }
+  
+  @IBAction func refreshTapped(_ sender: Any) {
     OTMClient.getRecentStudentLocations(numberOfLocation, completion: handleLocationsResponseByUpdatingTable(success:error:))
   }
   
   func handleLocationsResponseByUpdatingTable(success: Bool, error: Error?) {
-    if success {
-      self.tableView.reloadData()
+    guard success else {
+      self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
+      return
     }
+    self.tableView.reloadData()
   }
 }
