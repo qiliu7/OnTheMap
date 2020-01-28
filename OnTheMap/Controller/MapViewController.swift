@@ -25,6 +25,10 @@ class MapViewController: UIViewController {
   
   func handleLocationsResponseByPlacingPin(success: Bool, error: Error?) {
     
+    guard success else {
+      self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
+      return
+    }
     locations = OTMModel.locations
     var annotations = [MKAnnotation]()
     
@@ -72,7 +76,7 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    
+
     if control == view.rightCalloutAccessoryView {
       let app = UIApplication.shared
       if let toOpen = view.annotation?.subtitle {

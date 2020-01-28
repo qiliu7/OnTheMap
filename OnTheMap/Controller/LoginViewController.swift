@@ -33,14 +33,8 @@ class LoginViewController: UIViewController {
     if success {
       performSegue(withIdentifier: Constants.toLocationTabViewSegueId, sender: nil)
     } else {
-      self.showLoginFailure(message: error?.localizedDescription ?? "")
+      self.showAlert(title: "Login Failed", message: error?.localizedDescription ?? "")
     }
-  }
-
-  func showLoginFailure(message: String) {
-    let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
-    alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-    show(alertVC, sender: nil)
   }
   
   func setupUI() {

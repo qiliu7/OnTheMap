@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B111452C23DFFAB5009EC22F /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111452B23DFFAB5009EC22F /* UIViewController+Extension.swift */; };
 		B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB43F23D906FE0059C2FD /* AppDelegate.swift */; };
 		B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB44123D906FE0059C2FD /* SceneDelegate.swift */; };
 		B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB44323D906FE0059C2FD /* LoginViewController.swift */; };
@@ -23,9 +24,11 @@
 		B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */; };
 		B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47023DAC5A40059C2FD /* OTMModel.swift */; };
 		B17DB47323DC09BD0059C2FD /* LocationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */; };
+		B1FF5CF923DD21B5008C3A7E /* DisplayCurrentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FF5CF823DD21B5008C3A7E /* DisplayCurrentLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B111452B23DFFAB5009EC22F /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B17DB43C23D906FE0059C2FD /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17DB43F23D906FE0059C2FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17DB44123D906FE0059C2FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
 		B17DB47023DAC5A40059C2FD /* OTMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMModel.swift; sourceTree = "<group>"; };
 		B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPostingViewController.swift; sourceTree = "<group>"; };
+		B1FF5CF823DD21B5008C3A7E /* DisplayCurrentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCurrentLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				B17DB46623DAA6860059C2FD /* MapViewController.swift */,
 				B17DB46A23DAB9210059C2FD /* LocationTableViewController.swift */,
 				B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */,
+				B1FF5CF823DD21B5008C3A7E /* DisplayCurrentLocationViewController.swift */,
+				B111452B23DFFAB5009EC22F /* UIViewController+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */,
 				B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */,
 				B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */,
+				B111452C23DFFAB5009EC22F /* UIViewController+Extension.swift in Sources */,
 				B17DB45D23D932690059C2FD /* OTMClient.swift in Sources */,
 				B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */,
 				B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */,
@@ -251,6 +258,7 @@
 				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
 				B17DB46723DAA6860059C2FD /* MapViewController.swift in Sources */,
 				B17DB46B23DAB9210059C2FD /* LocationTableViewController.swift in Sources */,
+				B1FF5CF923DD21B5008C3A7E /* DisplayCurrentLocationViewController.swift in Sources */,
 				B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */,
 				B17DB46923DAB5830059C2FD /* Constants.swift in Sources */,
 			);
