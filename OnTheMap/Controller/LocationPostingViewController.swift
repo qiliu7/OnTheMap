@@ -36,7 +36,7 @@ class LocationPostingViewController: UIViewController {
             return
           }
           
-          let currentLocationVC = self.storyboard!.instantiateViewController(identifier: Constants.currentLocationVCStoryboardId) as! DisplayCurrentLocationViewController
+          let currentLocationVC = self.storyboard!.instantiateViewController(identifier: Constants.currentLocationVCStoryboardId) as! ConfirmLocationViewController
           currentLocationVC.coordinate = placemark.location!.coordinate
           currentLocationVC.addressString = "\(placemark.name ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
           self.navigationController?.pushViewController(currentLocationVC, animated: true)
