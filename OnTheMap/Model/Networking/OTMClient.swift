@@ -25,6 +25,7 @@ class OTMClient {
     static let signUp = "https://auth.udacity.com/sign-up"
     
     case login
+    case logout
     case getUserData
     case getRecentStudentLocations(Int)
     case putStudentLocation(String)
@@ -32,7 +33,8 @@ class OTMClient {
     
     var stringValue: String {
       switch self {
-      case .login:
+      case .login,
+           .logout:
         return Endpoints.base + "/session"
       case .getUserData:
         return Endpoints.base + "/users/\(Auth.userId)"
@@ -57,12 +59,45 @@ class OTMClient {
       if let response = response {
         Auth.sessionId = response.session.id
         Auth.userId = response.account.key
-        print(Auth.userId)
         completion(true, nil)
       } else {
         completion(false, error)
       }
     }
+  }
+  
+  class func logout(completion: @escaping (Bool, Error?) -> Void) {
+    var request = URLRequest(url: Endpoints.logout.url)
+    request.httpMethod = "DELETE"
+    var xsrfCookie: HTTPCookie? = nil
+    let sharedCookieStorage = HTTPCookieStorage.shared
+    for cookie in sharedCookieStorage.cookies! {
+      if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+    }
+    if let xsrfCookie = xsrfCookie {
+      request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+    }
+    let task = session.dataTask(with: request) { (data, response, error) in
+      guard let data = data else {
+        DispatchQueue.main.async {
+          completion(false, error)
+        }
+         return
+      }
+      let actualData = data.subdata(in: 5..<data.count)
+      let decoder = JSONDecoder()
+      do {
+        let _ = try decoder.decode([String: Session].self, from: actualData)
+        DispatchQueue.main.async {
+          completion(true, nil)
+        }
+      } catch {
+        DispatchQueue.main.async {
+          completion(false, error)
+        }
+      }
+    }
+    task.resume()
   }
   
   class func getUserData(completion: @escaping (Bool, Error?) -> Void) {

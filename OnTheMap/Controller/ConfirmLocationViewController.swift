@@ -12,9 +12,12 @@ import MapKit
 class ConfirmLocationViewController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
+  @IBOutlet weak var submitButton: UIButton!
+  
   var coordinate: CLLocationCoordinate2D!
   var addressString: String!
   var mediaURLString: String!
+  lazy var activityIndicator = createActivityIndicatorView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +31,14 @@ class ConfirmLocationViewController: UIViewController {
     placePin()
   }
   
+  private func setupUI() {
+    submitButton.layer.cornerRadius = submitButton.frame.height/8
+    view.addSubview(activityIndicator)
+    setActivityAnimation(busy: true)
+  }
+  
   private func placePin(){
+    mapView.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000), animated: true)
     let annotation = MKPointAnnotation()
     annotation.coordinate = coordinate
     annotation.title = addressString
@@ -36,17 +46,20 @@ class ConfirmLocationViewController: UIViewController {
   }
   
   @IBAction func submitTapped() {
-    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.accountId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
+    setActivityAnimation(busy: true)
     
+    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.accountId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
     // retrive previous posted objectId if any
     let objectId = OTMModel.objectId != nil ? OTMModel.objectId : getPreviousObjectId()
     if let objectId = objectId {
-      print("PUT")
       OTMClient.putStudentLocation(objectId: objectId, location: newLocation, completion: handleLocationResponse(success:error:))
     } else {
-      print("POST")
       OTMClient.postStudentLocation(location: newLocation, completion: handleLocationResponse(success:error:))
     }
+  }
+  
+  private func setActivityAnimation(busy: Bool) {
+    busy ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
   }
   
   // return objectId of previously posted location
@@ -69,14 +82,19 @@ class ConfirmLocationViewController: UIViewController {
     }
   }
 }
-  
+
 extension ConfirmLocationViewController: MKMapViewDelegate {
+  
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+    pinView.canShowCallout = true
+    pinView.pinTintColor = .red
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-      let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
-      pinView.canShowCallout = true
-      pinView.pinTintColor = .red
-      
-      return pinView
-    }
+    return pinView
+  }
+  
+  func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+    setActivityAnimation(busy: false)
+  }
+  
 }

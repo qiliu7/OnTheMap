@@ -15,6 +15,8 @@ class LocationPostingViewController: UIViewController {
   @IBOutlet weak var mediaURLTextField: UITextField!
   @IBOutlet weak var findLocationButton: UIButton!
   
+  lazy var activityIndicator = createActivityIndicatorView()
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     setupUI()
@@ -22,6 +24,7 @@ class LocationPostingViewController: UIViewController {
   
   func setupUI() {
     findLocationButton.layer.cornerRadius = findLocationButton.frame.height/8
+    view.addSubview(activityIndicator)
   }
   
   
@@ -30,7 +33,9 @@ class LocationPostingViewController: UIViewController {
     if let locationString = locationTextField.text, let mediaURLString = mediaURLTextField.text {
       
       if locationString != "" && mediaURLString != "" {
+        setGeocoding(true)
         getCoordinateForLocation(addressString: locationString) { (placemark, error) in
+          self.setGeocoding(false)
           guard let placemark = placemark else {
             self.showAlert(title: "Error", message: error?.localizedDescription ?? "Given Location Can't Be Retrieved" )
             return
@@ -62,4 +67,11 @@ class LocationPostingViewController: UIViewController {
       completionHandler(nil, error)
     }
   }
+  
+  func setGeocoding(_ coding: Bool) {
+     locationTextField.isEnabled = !coding
+     mediaURLTextField.isEnabled = !coding
+     findLocationButton.isEnabled = !coding
+     coding ? activityIndicator.startAnimating(): activityIndicator.stopAnimating()
+   }
 }

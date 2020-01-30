@@ -8,13 +8,34 @@
 
 import UIKit
 
-class LocationTableViewController: UITableViewController {
+class TableViewTabbedController: UITableViewController {
   
-  let numberOfLocation = 100
+  lazy var activityIndicator = createActivityIndicatorView()
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    view.addSubview(activityIndicator)
+    
+    setActivityAnimation(busy: true)
     OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByUpdatingTable(success:error:))
+  }
+  
+  @IBAction func logoutTapped(_ sender: Any) {
+    setActivityAnimation(busy: true)
+    OTMClient.logout(completion: handleLogoutResponse(success:error:))
+  }
+  
+  private func handleLogoutResponse(success: Bool, error: Error?) {
+    setActivityAnimation(busy: false)
+    if success {
+      self.dismiss(animated: true, completion: nil)
+    } else {
+      self.showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
+    }
+  }
+  
+  private func setActivityAnimation(busy: Bool) {
+    busy ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,8 +60,8 @@ class LocationTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    setActivityAnimation(busy: true)
     let location = OTMModel.locations[indexPath.row]
-    
     if let url = URL(string: location.mediaURL) {
       UIApplication.shared.open(url, options: [:], completionHandler: handleOpenURLComplete(success:))
     }
@@ -48,6 +69,7 @@ class LocationTableViewController: UITableViewController {
   }
   
   func handleOpenURLComplete(success: Bool) {
+    setActivityAnimation(busy: false)
     guard success else {
       self.showAlert(title: "Error", message: "Invalid URL")
       return
@@ -55,10 +77,12 @@ class LocationTableViewController: UITableViewController {
   }
   
   @IBAction func refreshTapped(_ sender: Any) {
-    OTMClient.getRecentStudentLocations(numberOfLocation, completion: handleLocationsResponseByUpdatingTable(success:error:))
+    setActivityAnimation(busy: true)
+    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByUpdatingTable(success:error:))
   }
   
   private func handleLocationsResponseByUpdatingTable(success: Bool, error: Error?) {
+    setActivityAnimation(busy: false)
     guard success else {
       self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return

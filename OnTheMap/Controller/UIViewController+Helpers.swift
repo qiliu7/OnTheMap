@@ -16,4 +16,12 @@ extension UIViewController {
     alertVC.addAction(action)
     self.present(alertVC, animated: true, completion: nil)
   }
+  
+  func createActivityIndicatorView() -> UIActivityIndicatorView {
+    let activity = UIActivityIndicatorView(style: .large)
+    activity.hidesWhenStopped = true
+    activity.center = self.view.center
+    activity.center.y -= self.view.frame.height/4
+    return activity
+  }
 }

@@ -71,9 +71,6 @@
                                 </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6rn-HQ-wAt">
-                                <rect key="frame" x="197" y="554" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -82,8 +79,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JH8-wH-04W" secondAttribute="trailing" constant="50" id="AbX-XU-Esq"/>
                             <constraint firstItem="Xgc-f4-QKt" firstAttribute="leading" secondItem="JH8-wH-04W" secondAttribute="leading" id="CD7-mk-NWJ"/>
                             <constraint firstItem="JH8-wH-04W" firstAttribute="top" secondItem="hQw-d6-tFt" secondAttribute="bottom" constant="80" id="Gan-du-KZh"/>
-                            <constraint firstItem="6rn-HQ-wAt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JCW-1d-EPZ"/>
-                            <constraint firstItem="6rn-HQ-wAt" firstAttribute="top" secondItem="Xgc-f4-QKt" secondAttribute="bottom" constant="8" id="iVK-ij-wG4"/>
                             <constraint firstItem="Xgc-f4-QKt" firstAttribute="top" secondItem="JH8-wH-04W" secondAttribute="bottom" constant="30" id="krs-bf-ARk"/>
                             <constraint firstItem="hQw-d6-tFt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="l94-u3-mKK"/>
                             <constraint firstItem="hQw-d6-tFt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rk9-tT-7Qk"/>
@@ -92,7 +87,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="K4z-KL-02e"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="6rn-HQ-wAt" id="clA-Z6-m0K"/>
                         <outlet property="emailTextField" destination="IDf-9j-XiB" id="A7y-yl-g15"/>
                         <outlet property="loginButton" destination="1h1-v0-ned" id="ZLg-GF-Oj2"/>
                         <outlet property="passwordTextField" destination="aCH-HK-w6v" id="mzs-NO-dPG"/>
@@ -107,7 +101,7 @@
         <!--On the Map-->
         <scene sceneID="tnV-zZ-9de">
             <objects>
-                <viewController id="cao-gq-y5c" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cao-gq-y5c" customClass="MapViewTabbedController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ijx-kz-2P5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,13 +120,18 @@
                         <viewLayoutGuide key="safeArea" id="NSs-zQ-VcP"/>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="a3s-Im-sOU">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="zI0-2o-UzN">
+                            <connections>
+                                <action selector="logoutTapped:" destination="cao-gq-y5c" id="sD4-TW-6co"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="0ZB-lS-h50">
+                            <barButtonItem image="icon_addpin" id="0ZB-lS-h50">
                                 <connections>
                                     <segue destination="e4n-eg-fgd" kind="presentation" id="bRZ-X2-BaT"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="l8k-N2-SkK">
+                            <barButtonItem image="icon_refresh" id="l8k-N2-SkK">
                                 <connections>
                                     <action selector="refreshTapped:" destination="cao-gq-y5c" id="qK7-Hd-Rz2"/>
                                 </connections>
@@ -150,7 +149,7 @@
         <!--On the Map-->
         <scene sceneID="aKF-GQ-1LH">
             <objects>
-                <tableViewController id="gCd-eM-gNI" customClass="LocationTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="gCd-eM-gNI" customClass="TableViewTabbedController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GUi-DD-4dy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,13 +186,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="On the Map" id="01Z-4z-foT">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="RXu-Bq-VFm">
+                            <connections>
+                                <action selector="logoutTapped:" destination="gCd-eM-gNI" id="dOv-AF-LBH"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="E3e-FI-Xm8">
+                            <barButtonItem title="Item" image="icon_addpin" id="E3e-FI-Xm8">
                                 <connections>
                                     <segue destination="e4n-eg-fgd" kind="presentation" id="6cE-rr-sVp"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="ZtO-bz-ITe">
+                            <barButtonItem image="icon_refresh" id="ZtO-bz-ITe">
                                 <connections>
                                     <action selector="refreshTapped:" destination="gCd-eM-gNI" id="IsQ-QD-I14"/>
                                 </connections>
@@ -297,7 +301,7 @@
                                     <constraint firstAttribute="height" constant="50" id="zGx-Da-AKA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="SUBMIT">
+                                <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -320,6 +324,7 @@
                     <navigationItem key="navigationItem" id="yzg-lv-4th"/>
                     <connections>
                         <outlet property="mapView" destination="qI7-3c-K3w" id="3jE-pv-VLG"/>
+                        <outlet property="submitButton" destination="Ojx-ZA-V4E" id="0Zf-dq-RpN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p9L-Yw-ja1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -403,10 +408,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_addpin" width="24" height="24"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_listview-selected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icon_mapview-selected" width="75" height="50"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="icon_world" width="52" height="67"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>

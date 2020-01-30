@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var signUpTextView: UITextView!
-  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
+  lazy var activityIndicator = createActivityIndicatorView()
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,6 +50,8 @@ class LoginViewController: UIViewController {
     style.alignment = .center
     attributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(0..<prompt.count))
     signUpTextView.attributedText = attributedString
+    
+    view.addSubview(activityIndicator)
   }
   
   func setLoggingIn(_ loggingIn: Bool) {

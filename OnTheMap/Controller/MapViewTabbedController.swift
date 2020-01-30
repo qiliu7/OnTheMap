@@ -9,32 +9,33 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewTabbedController: UIViewController {
   
   @IBOutlet weak var mapView: MKMapView!
-  var locations = [StudentLocation]()
+  lazy var activityIndicator = createActivityIndicatorView()
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    view.addSubview(activityIndicator)
+    
     mapView.delegate = self
+    setActivityAnimation(busy: true)
     OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByPlacingPin(success:error:))
   }
 
-  
   func handleLocationsResponseByPlacingPin(success: Bool, error: Error?) {
-    
     guard success else {
       self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return
     }
-    locations = OTMModel.locations
+    let locations = OTMModel.locations
     var annotations = [MKAnnotation]()
     
-    for loc in locations {
-      let coordinate = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-      let first = loc.firstName
-      let last = loc.lastName
-      let mediaURL = loc.mediaURL
+    for location in locations {
+      let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+      let first = location.firstName
+      let last = location.lastName
+      let mediaURL = location.mediaURL
       
       let annotation = MKPointAnnotation()
       annotation.coordinate = coordinate
@@ -47,13 +48,40 @@ class MapViewController: UIViewController {
     self.mapView.removeAnnotations(mapView.annotations)
     // place new annotations
     self.mapView.addAnnotations(annotations)
+    setActivityAnimation(busy: false)
   }
   
   @IBAction func refreshTapped(_ sender: Any) {
+    setActivityAnimation(busy: true)
     OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByPlacingPin(success:error:))
   }
+  
+  @IBAction func logoutTapped(_ sender: Any) {
+    setActivityAnimation(busy: true)
+    OTMClient.logout(completion: handleLogoutResponse(success:error:))
+  }
+  
+  private func handleLogoutResponse(success: Bool, error: Error?) {
+    setActivityAnimation(busy: false)
+    if success {
+      self.dismiss(animated: true, completion: nil)
+    } else {
+      self.showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
+    }
+  }
+  private func setActivityAnimation(busy: Bool) {
+    busy ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+  }
+  
+  private func handleOpenURLComplete(success: Bool) {
+    setActivityAnimation(busy: false)
+    guard success else {
+      self.showAlert(title: "Error", message: "Invalid URL")
+      return
+    }
+  }
 }
-extension MapViewController: MKMapViewDelegate {
+extension MapViewTabbedController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     
@@ -74,11 +102,11 @@ extension MapViewController: MKMapViewDelegate {
   }
   
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-
+    setActivityAnimation(busy: true)
     if control == view.rightCalloutAccessoryView {
       let app = UIApplication.shared
       if let toOpen = view.annotation?.subtitle {
-        app.open(URL(string: toOpen ?? "")!, options: [:], completionHandler: nil)
+        app.open(URL(string: toOpen ?? "")!, options: [:], completionHandler: handleOpenURLComplete(success:))
       }
     }
   }
