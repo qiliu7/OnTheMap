@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     setLoggingIn(true)
     let username = emailTextField.text ?? ""
     let password = passwordTextField.text ?? ""
+    OTMClient.Auth.accountId = username
     OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
   }
    

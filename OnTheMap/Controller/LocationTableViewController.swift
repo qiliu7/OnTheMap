@@ -14,7 +14,7 @@ class LocationTableViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.tableView.reloadData()
+    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByUpdatingTable(success:error:))
   }
   
   override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,7 +58,7 @@ class LocationTableViewController: UITableViewController {
     OTMClient.getRecentStudentLocations(numberOfLocation, completion: handleLocationsResponseByUpdatingTable(success:error:))
   }
   
-  func handleLocationsResponseByUpdatingTable(success: Bool, error: Error?) {
+  private func handleLocationsResponseByUpdatingTable(success: Bool, error: Error?) {
     guard success else {
       self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return
