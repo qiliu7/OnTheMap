@@ -32,14 +32,15 @@ class LocationPostingViewController: UIViewController {
       if locationString != "" && mediaURLString != "" {
         getCoordinateForLocation(addressString: locationString) { (placemark, error) in
           guard let placemark = placemark else {
-            self.showAlert(title: "Error", message: error?.localizedDescription ?? "The Given Location Can't Be Retrieved" )
+            self.showAlert(title: "Error", message: error?.localizedDescription ?? "Given Location Can't Be Retrieved" )
             return
           }
           
-          let currentLocationVC = self.storyboard!.instantiateViewController(identifier: Constants.currentLocationVCStoryboardId) as! ConfirmLocationViewController
-          currentLocationVC.coordinate = placemark.location!.coordinate
-          currentLocationVC.addressString = "\(placemark.name ?? ""), \(placemark.administrativeArea ?? ""), \(placemark.country ?? "")"
-          self.navigationController?.pushViewController(currentLocationVC, animated: true)
+          let confirmLocationVC = self.storyboard!.instantiateViewController(identifier: Constants.currentLocationVCStoryboardId) as! ConfirmLocationViewController
+          confirmLocationVC.coordinate = placemark.location!.coordinate
+          confirmLocationVC.addressString = "\(placemark.name ?? "") \(placemark.administrativeArea ?? "") \(placemark.country ?? "")"
+          confirmLocationVC.mediaURLString = mediaURLString
+          self.navigationController?.pushViewController(confirmLocationVC, animated: true)
         }
       } else {
         self.showAlert(title: "Error", message: "Please Fill in Both Your Location and the Media Link")

@@ -11,6 +11,7 @@ import Foundation
 struct Constants {
   
   // TODO: maybe add struct segue later
+  static let numberOfLocations = 100
   static let toLocationTabViewSegueId = "CompleteLogin"
   static let locationTableViewCellId = "LocationTableViewCell"
   static let currentLocationVCStoryboardId = "CurrentLocationViewController"

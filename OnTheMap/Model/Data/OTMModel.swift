@@ -9,5 +9,7 @@
 import Foundation
 
 struct OTMModel {
+  
+  static var objectId: String?
   static var locations = [StudentLocation]()
 }

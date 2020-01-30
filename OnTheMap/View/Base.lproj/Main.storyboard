@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rwn-PI-3ee">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -205,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="6242.0289855072469" y="557.8125"/>
         </scene>
-        <!--Location Posting View Controller-->
+        <!--Add Location-->
         <scene sceneID="lOF-zh-a4X">
             <objects>
                 <viewController id="zdr-js-WYy" customClass="LocationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -222,7 +222,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cambridge, MA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9h-ye-1Jr">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Cambridge, MA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o9h-ye-1Jr">
                                         <rect key="frame" x="0.0" y="65" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Shl-pt-5UK"/>
@@ -230,7 +230,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="location"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Media Link" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-QE-KeO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Linke to Share Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-QE-KeO">
                                         <rect key="frame" x="0.0" y="130" width="314" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="url"/>
@@ -239,7 +239,7 @@
                                         <rect key="frame" x="0.0" y="195" width="314" height="50"/>
                                         <color key="backgroundColor" red="0.079895339910000002" green="0.63936686519999997" blue="0.86835139989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="FIND LOCATION">
+                                        <state key="normal" title="Find on the Map">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -268,7 +268,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xEd-UW-MvM"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rqO-nO-xWL"/>
+                    <navigationItem key="navigationItem" title="Add Location" id="rqO-nO-xWL"/>
                     <connections>
                         <outlet property="findLocationButton" destination="Av9-aC-VRP" id="XjI-hb-cbI"/>
                         <outlet property="locationTextField" destination="o9h-ye-1Jr" id="0Yo-He-YPp"/>
@@ -279,10 +279,10 @@
             </objects>
             <point key="canvasLocation" x="8355.072463768116" y="184.82142857142856"/>
         </scene>
-        <!--Display Current Location View Controller-->
+        <!--Confirm Location View Controller-->
         <scene sceneID="VmE-29-jv7">
             <objects>
-                <viewController storyboardIdentifier="CurrentLocationViewController" id="Dyc-Y2-OJH" customClass="DisplayCurrentLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentLocationViewController" id="Dyc-Y2-OJH" customClass="ConfirmLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a8c-3z-EMN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -300,6 +300,9 @@
                                 <state key="normal" title="SUBMIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitTapped" destination="Dyc-Y2-OJH" eventType="touchUpInside" id="vPG-NL-iBb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
