@@ -14,7 +14,6 @@ class OTMClient {
   
   struct Auth {
     static var sessionId = ""
-    static var accountId = ""
     static var userId = ""
     static var firstName: String?
     static var lastName: String?

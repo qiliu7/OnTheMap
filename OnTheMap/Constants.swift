@@ -9,8 +9,7 @@
 import Foundation
 
 struct Constants {
-  
-  // TODO: maybe add struct segue later
+
   static let numberOfLocations = 100
   static let showLocations = "CompleteLogin"
   static let locationTableViewCellId = "LocationTableViewCell"
