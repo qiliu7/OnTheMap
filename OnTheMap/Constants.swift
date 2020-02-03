@@ -15,5 +15,5 @@ struct Constants {
   static let showLocations = "CompleteLogin"
   static let locationTableViewCellId = "LocationTableViewCell"
   static let currentLocationVCStoryboardId = "CurrentLocationViewController"
-  static let postNewLocation = "toLocationPostingVC"
+  static let postNewLocation = "postNewLocation"
 }

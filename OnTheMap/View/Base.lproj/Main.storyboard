@@ -128,7 +128,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" id="0ZB-lS-h50">
                                 <connections>
-                                    <segue destination="e4n-eg-fgd" kind="presentation" id="bRZ-X2-BaT"/>
+                                    <action selector="addButtonTapped" destination="cao-gq-y5c" id="Gqg-Dk-D3J"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" id="l8k-N2-SkK">
@@ -140,6 +140,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Uie-wv-GoO" id="g1T-4v-4sG"/>
+                        <segue destination="e4n-eg-fgd" kind="presentation" identifier="postNewLocation" id="VgF-w6-eDU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iC2-N5-WaH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,7 +195,7 @@
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="E3e-FI-Xm8">
                                 <connections>
-                                    <segue destination="e4n-eg-fgd" kind="presentation" id="6cE-rr-sVp"/>
+                                    <action selector="addButtonTapped" destination="gCd-eM-gNI" id="M6u-3u-2bP"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" id="ZtO-bz-ITe">
@@ -204,6 +205,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="e4n-eg-fgd" kind="presentation" identifier="postNewLocation" id="deJ-fd-hCq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QZk-t4-hei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -232,12 +236,12 @@
                                             <constraint firstAttribute="height" constant="50" id="Shl-pt-5UK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" textContentType="location"/>
+                                        <textInputTraits key="textInputTraits" spellCheckingType="yes" smartInsertDeleteType="yes" textContentType="location"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Linke to Share Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1F-QE-KeO">
                                         <rect key="frame" x="0.0" y="130" width="314" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" textContentType="url"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="URL" smartInsertDeleteType="yes" textContentType="url"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Av9-aC-VRP">
                                         <rect key="frame" x="0.0" y="195" width="314" height="50"/>
@@ -418,6 +422,6 @@
         <image name="logo-u" width="62" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6cE-rr-sVp"/>
+        <segue reference="deJ-fd-hCq"/>
     </inferredMetricsTieBreakers>
 </document>
