@@ -48,7 +48,7 @@ class ConfirmLocationViewController: UIViewController {
   @IBAction func submitTapped() {
     setActivityAnimation(busy: true)
     
-    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.accountId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
+    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.userId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
     // retrive previous posted objectId if any
     let objectId = OTMModel.objectId != nil ? OTMModel.objectId : getPreviousObjectId()
     if let objectId = objectId {
