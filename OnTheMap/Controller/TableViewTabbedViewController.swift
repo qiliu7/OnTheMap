@@ -34,6 +34,16 @@ class TableViewTabbedController: UITableViewController {
     }
   }
   
+  @IBAction func addButtonTapped() {
+    // check if user has already posted a location
+    if OTMModel.objectId != nil {
+      showAlert(title: "You Have Already Posted a Location", message: "Do you want to update it?", cancelable: true, okHandler: { _ in
+        self.performSegue(withIdentifier: Constants.postNewLocation, sender: nil)})
+    } else {
+      performSegue(withIdentifier: Constants.postNewLocation, sender: nil)
+    }
+  }
+  
   private func setActivityAnimation(busy: Bool) {
     busy ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
   }

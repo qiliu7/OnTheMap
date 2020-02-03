@@ -20,10 +20,10 @@ class MapViewTabbedController: UIViewController {
     
     mapView.delegate = self
     setActivityAnimation(busy: true)
-    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByPlacingPin(success:error:))
+    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponse(success:error:))
   }
-
-  func handleLocationsResponseByPlacingPin(success: Bool, error: Error?) {
+  
+  func handleLocationsResponse(success: Bool, error: Error?) {
     guard success else {
       self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return
@@ -53,14 +53,24 @@ class MapViewTabbedController: UIViewController {
   
   @IBAction func refreshTapped(_ sender: Any) {
     setActivityAnimation(busy: true)
-    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponseByPlacingPin(success:error:))
+    OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponse(success:error:))
+  }
+  
+  @IBAction func addButtonTapped() {
+    // check if user has already posted a location
+    if OTMModel.objectId != nil {
+      showAlert(title: "You Have Already Posted a Location", message: "Do you want to update it?", cancelable: true, okHandler: { _ in
+        self.performSegue(withIdentifier: Constants.postNewLocation, sender: nil)})
+    } else {
+      performSegue(withIdentifier: Constants.postNewLocation, sender: nil)
+    }
   }
   
   @IBAction func logoutTapped(_ sender: Any) {
     setActivityAnimation(busy: true)
     OTMClient.logout(completion: handleLogoutResponse(success:error:))
   }
-  
+
   private func handleLogoutResponse(success: Bool, error: Error?) {
     setActivityAnimation(busy: false)
     if success {
