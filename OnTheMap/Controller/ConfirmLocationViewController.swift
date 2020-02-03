@@ -22,11 +22,9 @@ class ConfirmLocationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     mapView.delegate = self
-    // retrieve user name
-    OTMClient.getUserData { (success, error) in
-      if !success {
-        self.showAlert(title: "Error", message: "Can't retrive your full name, will use a default name")
-      }
+    // retrieve user name if have not posted yet
+    if OTMModel.objectId == nil {
+      OTMClient.getUserData(completion: handleUserDataResponse(success:error:))
     }
     placePin()
   }
@@ -45,14 +43,19 @@ class ConfirmLocationViewController: UIViewController {
     mapView.addAnnotation(annotation)
   }
   
+  private func handleUserDataResponse(success: Bool, error: Error?) {
+    if !success {
+      self.showAlert(title: "Error", message: "Can't retrive your full name, will use a default name")
+    }
+  }
+  
   @IBAction func submitTapped() {
     setActivityAnimation(busy: true)
     
     let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.userId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
-    // retrive previous posted objectId if any
-    let objectId = OTMModel.objectId != nil ? OTMModel.objectId : getPreviousObjectId()
-    if let objectId = objectId {
-      OTMClient.putStudentLocation(objectId: objectId, location: newLocation, completion: handleLocationResponse(success:error:))
+    
+    if OTMModel.objectId != nil {
+      OTMClient.putStudentLocation(objectId: OTMModel.objectId!, location: newLocation, completion: handleLocationResponse(success:error:))
     } else {
       OTMClient.postStudentLocation(location: newLocation, completion: handleLocationResponse(success:error:))
     }
@@ -66,7 +69,7 @@ class ConfirmLocationViewController: UIViewController {
   private func getPreviousObjectId() -> String? {
     let postedLocations = OTMModel.locations
     for location in postedLocations {
-      if location.uniqueKey == OTMClient.Auth.accountId {
+      if location.uniqueKey == OTMClient.Auth.userId {
         let objectId = location.objectId
         return objectId
       }
