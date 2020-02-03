@@ -19,14 +19,26 @@ class LocationPostingViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
+    subscribeToKeyboardNotifications()
     setupUI()
+    configureTextFields()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    unsubscribeToKeyboardNotifications()
   }
   
   func setupUI() {
     findLocationButton.layer.cornerRadius = findLocationButton.frame.height/8
     view.addSubview(activityIndicator)
   }
-  
+  func configureTextFields() {
+    locationTextField.delegate = self
+    locationTextField.returnKeyType = .done
+    mediaURLTextField.delegate = self
+    mediaURLTextField.returnKeyType = .done
+  }
   
   @IBAction func findLocationTapped(_ sender: Any) {
     
@@ -75,3 +87,12 @@ class LocationPostingViewController: UIViewController {
      coding ? activityIndicator.startAnimating(): activityIndicator.stopAnimating()
    }
 }
+
+extension LocationPostingViewController: UITextFieldDelegate {
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+}
+
