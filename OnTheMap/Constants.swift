@@ -12,7 +12,8 @@ struct Constants {
   
   // TODO: maybe add struct segue later
   static let numberOfLocations = 100
-  static let toLocationTabViewSegueId = "CompleteLogin"
+  static let showLocations = "CompleteLogin"
   static let locationTableViewCellId = "LocationTableViewCell"
   static let currentLocationVCStoryboardId = "CurrentLocationViewController"
+  static let postNewLocation = "toLocationPostingVC"
 }
