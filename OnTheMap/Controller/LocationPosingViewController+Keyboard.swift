@@ -22,8 +22,8 @@ extension LocationPostingViewController {
   }
   
   @objc func keyboardWillShow(_ notification: Notification) {
-    if mediaURLTextField.isFirstResponder {
-      view.frame.origin.y -= getKeyboradHeight(notification)/2
+    if locationTextField.isFirstResponder || mediaURLTextField.isFirstResponder {
+      view.frame.origin.y = -getKeyboradHeight(notification)/2
     }
   }
   
