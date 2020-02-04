@@ -17,6 +17,7 @@ class ShowLocationTableViewController: ShowLocationBaseViewController {
     tableView.dataSource = self
     tableView.delegate = self
   }
+  
   override func handleLocationsResponse(success: Bool, error: Error?) {
     super.handleLocationsResponse(success: success, error: error)
     tableView.reloadData()
