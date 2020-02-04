@@ -25,10 +25,7 @@ class ConfirmLocationViewController: UIViewController {
     setupUI()
     placePin()
   }
-  override func viewDidAppear(_ animated: Bool) {
-    setActivityAnimation(busy: true)
-  }
-  
+
   private func setupUI() {
     submitButton.layer.cornerRadius = submitButton.frame.height/8
     view.addSubview(activityIndicator)
@@ -97,6 +94,9 @@ extension ConfirmLocationViewController: MKMapViewDelegate {
     return pinView
   }
   
+  func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+    setActivityAnimation(busy: true)
+  }
   func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
     setActivityAnimation(busy: false)
   }
