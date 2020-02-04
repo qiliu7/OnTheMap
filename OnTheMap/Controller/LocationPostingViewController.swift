@@ -60,7 +60,7 @@ class LocationPostingViewController: UIViewController {
           self.navigationController?.pushViewController(confirmLocationVC, animated: true)
         }
       } else {
-        self.showAlert(title: "Error", message: "Please Fill in Both Your Location and the Media Link")
+        showAlert(title: "Error", message: "Please Fill in Both Your Location and the Media Link")
         
       }
     }

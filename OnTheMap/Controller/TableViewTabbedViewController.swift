@@ -28,9 +28,9 @@ class TableViewTabbedController: UITableViewController {
   private func handleLogoutResponse(success: Bool, error: Error?) {
     setActivityAnimation(busy: false)
     if success {
-      self.dismiss(animated: true, completion: nil)
+      dismiss(animated: true, completion: nil)
     } else {
-      self.showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
+      showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
     }
   }
   
@@ -81,7 +81,7 @@ class TableViewTabbedController: UITableViewController {
   func handleOpenURLComplete(success: Bool) {
     setActivityAnimation(busy: false)
     guard success else {
-      self.showAlert(title: "Error", message: "Invalid URL")
+      showAlert(title: "Error", message: "Invalid URL")
       return
     }
   }
@@ -94,9 +94,9 @@ class TableViewTabbedController: UITableViewController {
   private func handleLocationsResponseByUpdatingTable(success: Bool, error: Error?) {
     setActivityAnimation(busy: false)
     guard success else {
-      self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
+      showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return
     }
-    self.tableView.reloadData()
+    tableView.reloadData()
   }
 }

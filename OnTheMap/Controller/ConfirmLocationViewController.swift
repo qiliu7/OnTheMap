@@ -45,7 +45,7 @@ class ConfirmLocationViewController: UIViewController {
   
   private func handleUserDataResponse(success: Bool, error: Error?) {
     if !success {
-      self.showAlert(title: "Error", message: "Can't retrive your full name, will use a default name")
+      showAlert(title: "Error", message: "Can't retrive your full name, will use a default name")
     }
   }
   
@@ -81,7 +81,7 @@ class ConfirmLocationViewController: UIViewController {
     if success {
       dismiss(animated: true, completion: nil)
     } else {
-      self.showAlert(title: "Error", message: error?.localizedDescription ?? "Failed to submit your location.")
+      showAlert(title: "Error", message: error?.localizedDescription ?? "Failed to submit your location.")
     }
   }
 }

@@ -25,7 +25,7 @@ class MapViewTabbedController: UIViewController {
   
   func handleLocationsResponse(success: Bool, error: Error?) {
     guard success else {
-      self.showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
+      showAlert(title: "Get Locations Failed", message: error?.localizedDescription ?? "")
       return
     }
     let locations = OTMModel.locations
@@ -45,9 +45,9 @@ class MapViewTabbedController: UIViewController {
       annotations.append(annotation)
     }
     // remove existing annotations
-    self.mapView.removeAnnotations(mapView.annotations)
+    mapView.removeAnnotations(mapView.annotations)
     // place new annotations
-    self.mapView.addAnnotations(annotations)
+    mapView.addAnnotations(annotations)
     setActivityAnimation(busy: false)
   }
   
@@ -74,9 +74,9 @@ class MapViewTabbedController: UIViewController {
   private func handleLogoutResponse(success: Bool, error: Error?) {
     setActivityAnimation(busy: false)
     if success {
-      self.dismiss(animated: true, completion: nil)
+      dismiss(animated: true, completion: nil)
     } else {
-      self.showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
+      showAlert(title: "Logout Error", message: error?.localizedDescription ?? "")
     }
   }
   private func setActivityAnimation(busy: Bool) {
@@ -86,7 +86,7 @@ class MapViewTabbedController: UIViewController {
   private func handleOpenURLComplete(success: Bool) {
     setActivityAnimation(busy: false)
     guard success else {
-      self.showAlert(title: "Error", message: "Invalid URL")
+      showAlert(title: "Error", message: "Invalid URL")
       return
     }
   }

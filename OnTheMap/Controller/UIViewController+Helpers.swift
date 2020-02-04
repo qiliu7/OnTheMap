@@ -20,7 +20,7 @@ extension UIViewController {
     let action = UIAlertAction(title: "OK", style: .default, handler: okHandler)
     alertVC.addAction(action)
     
-    self.present(alertVC, animated: true, completion: nil)
+    present(alertVC, animated: true, completion: nil)
   }
   
   func createActivityIndicatorView() -> UIActivityIndicatorView {
