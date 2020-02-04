@@ -17,9 +17,9 @@ class ShowLocationBaseViewController: UIViewController {
     setupNavigationBar()
     view.addSubview(activityIndicator)
   }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     setActivityAnimation(busy: true)
     OTMClient.getRecentStudentLocations(Constants.numberOfLocations, completion: handleLocationsResponse(success:error:))
   }
