@@ -19,9 +19,13 @@ class LocationPostingViewController: UIViewController {
     
   override func viewDidLoad() {
     super.viewDidLoad()
-    subscribeToKeyboardNotifications()
     setupUI()
     configureTextFields()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    subscribeToKeyboardNotifications()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -33,6 +37,7 @@ class LocationPostingViewController: UIViewController {
     findLocationButton.layer.cornerRadius = findLocationButton.frame.height/8
     view.addSubview(activityIndicator)
   }
+  
   func configureTextFields() {
     locationTextField.delegate = self
     locationTextField.returnKeyType = .done
