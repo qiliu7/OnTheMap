@@ -10,6 +10,8 @@ import Foundation
 
 struct OTMModel {
   
+  static var firstName: String?
+  static var lastName: String?
   static var objectId: String?
   static var locations = [StudentLocation]()
 }

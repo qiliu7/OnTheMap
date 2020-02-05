@@ -22,17 +22,13 @@ class ConfirmLocationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     mapView.delegate = self
-    // retrieve user name if have not posted yet
-    if OTMModel.objectId == nil {
-      OTMClient.getUserData(completion: handleUserDataResponse(success:error:))
-    }
+    setupUI()
     placePin()
   }
-  
+
   private func setupUI() {
     submitButton.layer.cornerRadius = submitButton.frame.height/8
     view.addSubview(activityIndicator)
-    setActivityAnimation(busy: true)
   }
   
   private func placePin(){
@@ -43,45 +39,47 @@ class ConfirmLocationViewController: UIViewController {
     mapView.addAnnotation(annotation)
   }
   
-  private func handleUserDataResponse(success: Bool, error: Error?) {
-    if !success {
-      self.showAlert(title: "Error", message: "Can't retrive your full name, will use a default name")
-    }
-  }
-  
   @IBAction func submitTapped() {
     setActivityAnimation(busy: true)
     
-    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.userId, firstName: OTMClient.Auth.firstName ?? "John", lastName: OTMClient.Auth.lastName ?? "Doe", mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
-    
-    if OTMModel.objectId != nil {
-      OTMClient.putStudentLocation(objectId: OTMModel.objectId!, location: newLocation, completion: handleLocationResponse(success:error:))
+    // retrieve user name if is the first time posting a location
+    if OTMModel.firstName == nil {
+      OTMClient.getUserData(completion: handleUserDataResponse(success:error:))
     } else {
-      OTMClient.postStudentLocation(location: newLocation, completion: handleLocationResponse(success:error:))
+      updateLocation()
     }
+  }
+  
+  private func handleUserDataResponse(success: Bool, error: Error?) {
+     if !success {
+       showAlert(title: "Error", message: "Can't retrive your full name, will use a default name", okHandler: postNewLocation(_:))
+     } else {
+      postNewLocation()
+    }
+   }
+
+  private func postNewLocation(_ action: UIAlertAction? = nil) {
+    let newLocation = LocationRequest(uniqueKey: OTMClient.Auth.userId, firstName: OTMModel.firstName!, lastName: OTMModel.lastName!, mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
+    
+    OTMClient.postStudentLocation(location: newLocation, completion: handleLocationResponse(success:error:))
+  }
+  
+  private func updateLocation() {
+    // send PUT request if user already posted
+    let updatedLocation = LocationRequest(uniqueKey: OTMClient.Auth.userId, firstName: OTMModel.firstName!, lastName: OTMModel.lastName!, mapString: addressString, mediaURL: mediaURLString, latitude: coordinate.latitude, longitude: coordinate.longitude)
+    
+    OTMClient.putStudentLocation(objectId: OTMModel.objectId!, location: updatedLocation, completion: handleLocationResponse(success:error:))
   }
   
   private func setActivityAnimation(busy: Bool) {
     busy ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
   }
-  
-  // return objectId of previously posted location
-  private func getPreviousObjectId() -> String? {
-    let postedLocations = OTMModel.locations
-    for location in postedLocations {
-      if location.uniqueKey == OTMClient.Auth.userId {
-        let objectId = location.objectId
-        return objectId
-      }
-    }
-    return nil
-  }
-  
+
   private func handleLocationResponse(success: Bool, error: Error?) {
     if success {
       dismiss(animated: true, completion: nil)
     } else {
-      self.showAlert(title: "Error", message: error?.localizedDescription ?? "Failed to submit your location.")
+      showAlert(title: "Error", message: error?.localizedDescription ?? "Failed to submit your location.")
     }
   }
 }
@@ -96,6 +94,9 @@ extension ConfirmLocationViewController: MKMapViewDelegate {
     return pinView
   }
   
+  func mapViewWillStartLoadingMap(_ mapView: MKMapView) {
+    setActivityAnimation(busy: true)
+  }
   func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
     setActivityAnimation(busy: false)
   }

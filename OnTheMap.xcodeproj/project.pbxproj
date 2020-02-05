@@ -14,8 +14,9 @@
 		B111453623E2A594009EC22F /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453523E2A594009EC22F /* PostLocationResponse.swift */; };
 		B111453823E2B8FF009EC22F /* LocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453723E2B8FF009EC22F /* LocationRequest.swift */; };
 		B111453A23E2C262009EC22F /* RoundCorneredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453923E2C262009EC22F /* RoundCorneredButton.swift */; };
-		B111453C23E31E53009EC22F /* TableViewTabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453B23E31E53009EC22F /* TableViewTabbedViewController.swift */; };
-		B111453E23E83B09009EC22F /* LocationPosingViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453D23E83B09009EC22F /* LocationPosingViewController+Keyboard.swift */; };
+		B111453C23E31E53009EC22F /* ShowLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453B23E31E53009EC22F /* ShowLocationTableViewController.swift */; };
+		B111453E23E83B09009EC22F /* LocationPostingViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453D23E83B09009EC22F /* LocationPostingViewController+Keyboard.swift */; };
+		B111454023E90A1B009EC22F /* ShowLocationBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B111453F23E90A1B009EC22F /* ShowLocationBaseViewController.swift */; };
 		B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB43F23D906FE0059C2FD /* AppDelegate.swift */; };
 		B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB44123D906FE0059C2FD /* SceneDelegate.swift */; };
 		B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB44323D906FE0059C2FD /* LoginViewController.swift */; };
@@ -26,7 +27,7 @@
 		B17DB46023D93A320059C2FD /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB45F23D93A320059C2FD /* LoginRequest.swift */; };
 		B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46223D96EF80059C2FD /* SessionResponse.swift */; };
 		B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46423D97A750059C2FD /* OTMResponse.swift */; };
-		B17DB46723DAA6860059C2FD /* MapViewTabbedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46623DAA6860059C2FD /* MapViewTabbedController.swift */; };
+		B17DB46723DAA6860059C2FD /* ShowLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46623DAA6860059C2FD /* ShowLocationMapViewController.swift */; };
 		B17DB46923DAB5830059C2FD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46823DAB5830059C2FD /* Constants.swift */; };
 		B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */; };
 		B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17DB47023DAC5A40059C2FD /* OTMModel.swift */; };
@@ -41,8 +42,9 @@
 		B111453523E2A594009EC22F /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
 		B111453723E2B8FF009EC22F /* LocationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationRequest.swift; sourceTree = "<group>"; };
 		B111453923E2C262009EC22F /* RoundCorneredButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCorneredButton.swift; sourceTree = "<group>"; };
-		B111453B23E31E53009EC22F /* TableViewTabbedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewTabbedViewController.swift; sourceTree = "<group>"; };
-		B111453D23E83B09009EC22F /* LocationPosingViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationPosingViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		B111453B23E31E53009EC22F /* ShowLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowLocationTableViewController.swift; sourceTree = "<group>"; };
+		B111453D23E83B09009EC22F /* LocationPostingViewController+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationPostingViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		B111453F23E90A1B009EC22F /* ShowLocationBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLocationBaseViewController.swift; sourceTree = "<group>"; };
 		B17DB43C23D906FE0059C2FD /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17DB43F23D906FE0059C2FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B17DB44123D906FE0059C2FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 		B17DB45F23D93A320059C2FD /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		B17DB46223D96EF80059C2FD /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		B17DB46423D97A750059C2FD /* OTMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMResponse.swift; sourceTree = "<group>"; };
-		B17DB46623DAA6860059C2FD /* MapViewTabbedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewTabbedController.swift; sourceTree = "<group>"; };
+		B17DB46623DAA6860059C2FD /* ShowLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLocationMapViewController.swift; sourceTree = "<group>"; };
 		B17DB46823DAB5830059C2FD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B17DB46D23DAB9FD0059C2FD /* LocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResponse.swift; sourceTree = "<group>"; };
 		B17DB47023DAC5A40059C2FD /* OTMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMModel.swift; sourceTree = "<group>"; };
@@ -115,10 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				B17DB44323D906FE0059C2FD /* LoginViewController.swift */,
-				B17DB46623DAA6860059C2FD /* MapViewTabbedController.swift */,
-				B111453B23E31E53009EC22F /* TableViewTabbedViewController.swift */,
+				B111453F23E90A1B009EC22F /* ShowLocationBaseViewController.swift */,
+				B17DB46623DAA6860059C2FD /* ShowLocationMapViewController.swift */,
+				B111453B23E31E53009EC22F /* ShowLocationTableViewController.swift */,
 				B17DB47223DC09BD0059C2FD /* LocationPostingViewController.swift */,
-				B111453D23E83B09009EC22F /* LocationPosingViewController+Keyboard.swift */,
+				B111453D23E83B09009EC22F /* LocationPostingViewController+Keyboard.swift */,
 				B111453123E295BE009EC22F /* ConfirmLocationViewController.swift */,
 				B111452B23DFFAB5009EC22F /* UIViewController+Helpers.swift */,
 			);
@@ -265,11 +268,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B111452E23E02431009EC22F /* StudentLocation.swift in Sources */,
+				B111454023E90A1B009EC22F /* ShowLocationBaseViewController.swift in Sources */,
 				B17DB44423D906FE0059C2FD /* LoginViewController.swift in Sources */,
 				B17DB46E23DAB9FD0059C2FD /* LocationResponse.swift in Sources */,
 				B111453823E2B8FF009EC22F /* LocationRequest.swift in Sources */,
 				B17DB44023D906FE0059C2FD /* AppDelegate.swift in Sources */,
-				B111453E23E83B09009EC22F /* LocationPosingViewController+Keyboard.swift in Sources */,
+				B111453E23E83B09009EC22F /* LocationPostingViewController+Keyboard.swift in Sources */,
 				B111453623E2A594009EC22F /* PostLocationResponse.swift in Sources */,
 				B111452C23DFFAB5009EC22F /* UIViewController+Helpers.swift in Sources */,
 				B111453023E28F10009EC22F /* UserInfo.swift in Sources */,
@@ -279,10 +283,10 @@
 				B17DB44223D906FE0059C2FD /* SceneDelegate.swift in Sources */,
 				B17DB47323DC09BD0059C2FD /* LocationPostingViewController.swift in Sources */,
 				B17DB46323D96EF80059C2FD /* SessionResponse.swift in Sources */,
-				B111453C23E31E53009EC22F /* TableViewTabbedViewController.swift in Sources */,
+				B111453C23E31E53009EC22F /* ShowLocationTableViewController.swift in Sources */,
 				B17DB46523D97A750059C2FD /* OTMResponse.swift in Sources */,
 				B111453223E295BE009EC22F /* ConfirmLocationViewController.swift in Sources */,
-				B17DB46723DAA6860059C2FD /* MapViewTabbedController.swift in Sources */,
+				B17DB46723DAA6860059C2FD /* ShowLocationMapViewController.swift in Sources */,
 				B17DB47123DAC5A40059C2FD /* OTMModel.swift in Sources */,
 				B17DB46923DAB5830059C2FD /* Constants.swift in Sources */,
 			);

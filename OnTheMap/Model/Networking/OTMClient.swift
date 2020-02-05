@@ -15,8 +15,6 @@ class OTMClient {
   struct Auth {
     static var sessionId = ""
     static var userId = ""
-    static var firstName: String?
-    static var lastName: String?
   }
   
   enum Endpoints {
@@ -102,11 +100,13 @@ class OTMClient {
   class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
     taskForGETRequest(url: Endpoints.getUserData.url, ResponseType: UserInfo.self, trimResponse: true) { (response, error) in
       guard let response = response else {
+        OTMModel.firstName = "John"
+        OTMModel.lastName = "Doe"
         completion(false, error)
         return
       }
-      Auth.firstName = response.firstName
-      Auth.lastName = response.lastName
+      OTMModel.firstName = response.firstName
+      OTMModel.lastName = response.lastName
       completion(true, nil)
     }
   }
@@ -136,6 +136,8 @@ class OTMClient {
     taskForPOSTRequest(url: Endpoints.postStudentLocation.url, body: location, responseType: PostLocationResponse.self, trimResponse: false) { (response, error) in
       if let response = response {
         OTMModel.objectId = response.objectId
+        OTMModel.firstName = location.firstName
+        OTMModel.lastName = location.lastName
         completion(true, nil)
       } else {
         completion(false, error)
